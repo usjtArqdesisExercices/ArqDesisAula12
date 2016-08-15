@@ -1,4 +1,4 @@
-package arqdesis_aula02b;
+package arqdesis_aula02;
 
 
 public class SaqueTeste {
