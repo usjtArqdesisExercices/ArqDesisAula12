@@ -59,7 +59,17 @@ public class Saque {
 		saqueTO.setValorSaque(valorSaque);
 		saqueTO.setData((java.sql.Date) data);
 		saqueDAO.efetuarSaque(saqueTO);
+		
+		salvaMovBanc();
 	}
+	
+	public void salvaMovBanc(){
+		
+		MovimentacaoBancaria movBancaria = new MovimentacaoBancaria(idCliente, valorSaque, saldoAtual, 2, data);
+		
+		movBancaria.salvaDebito();		
+	}
+	
 	
 	public void createDate(){
 		
@@ -67,8 +77,7 @@ public class Saque {
 		long mili =  minhaData.getTime();  
 		java.sql.Date dataSQL = new java.sql.Date(mili); 
 		
-		setData(dataSQL);
-		
+		setData(dataSQL);	
 	}
 	
 

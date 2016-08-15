@@ -5,7 +5,7 @@ public class SaqueTeste {
 	
 	public static void main(String args[]){
 	
-		Saque saque = new Saque(1, 15.00, 155.00);
+		Saque saque = new Saque(3, 25.00, 1000.00);
 		
 		saque.createDate();
 		saque.efetuarSaque();
