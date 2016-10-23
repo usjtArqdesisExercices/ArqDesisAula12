@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="ArqDeSis_Project_Caixa_Eletronico_Web">
+    <wb-module deploy-name="ArqDeSisProjectCaixaEletronicoWeb">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="ArqDeSis_Project_Caixa_Eletronico_Web"/>
-        <property name="java-output-path" value="/ArqDeSis_Project_Caixa_Eletronico_Web/build/classes"/>
+        <property name="java-output-path" value="/ArqDeSisProjectCaixaEletronicoWeb/build/classes"/>
+        <property name="context-root" value="ArqDeSisProjectCaixaEletronicoWeb"/>
     </wb-module>
 </project-modules>

@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+/*
+ * style.css
+ */
+body {
+  padding-top: 10px;
+  background: black
+ 
+}
+
+#divLabes {
+    padding-top: 90px;
+
+}
+
+#submitButton{
+	padding-top: 10px;
+}
+
+#titleBankLine {
+	font-size: 250%;
+	font-family: "Times New Roman", Times, serif;
+	color: #DCDCDC;
+	
+}
+
+#loginButton {
+	font-family: "Times New Roman", Times, serif;
+	color: #DCDCDC;
+}
+
+#inputWithdrawValue {
+	width: 50px 50px
+}

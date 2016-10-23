@@ -1,8 +1,11 @@
-package arqdesis_aula02;
+package controller;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+
+import dao.ExtratoDAO;
+import to.ExtratoTO;
 
 public class Extrato {
 
@@ -40,7 +43,7 @@ public class Extrato {
 	}
 
 	public <E> void consultaExtrato() {
-		
+
 		ExtratoDAO extDAO = new ExtratoDAO();
 		ExtratoTO extTO = new ExtratoTO();
 
@@ -49,22 +52,22 @@ public class Extrato {
 		extTO.setDataFinal((java.sql.Date) dataFinal);
 
 		ArrayList<ExtratoTO> extrato = new ArrayList<>();
-		extrato = extDAO.consultaExtrato(extTO); 
-		
-		for(int i=0; i < extrato.size(); i++){   
-            System.out.println("ID do Cliente: " + extrato.get(i).getIdCliente() + "\nValor Da Movimentacao: " + extrato.get(i).getValorMovimentacao() + "\nValor Saldo Atual: " +
-            		extrato.get(i).getSaldoAtual() + "\nTipo Movimentação: " + extrato.get(i).getTipoMovimentacao() + "\nData Movimentacao: " + extrato.get(i).getData() +
-            			"\n-------------------------------------------------");   
-        }   
-    }
+		extrato = extDAO.consultaExtrato(extTO);
 
-	
-	public void createDate(){
-		
-		Date minhaData = new Date();  
-		long mili =  minhaData.getTime();  
-		java.sql.Date dataSQL = new java.sql.Date(mili); 
-		
+		for (int i = 0; i < extrato.size(); i++) {
+			System.out.println("ID do Cliente: " + extrato.get(i).getIdCliente() + "\nValor Da Movimentacao: "
+					+ extrato.get(i).getValorMovimentacao() + "\nValor Saldo Atual: " + extrato.get(i).getSaldoAtual()
+					+ "\nTipo Movimentação: " + extrato.get(i).getTipoMovimentacao() + "\nData Movimentacao: "
+					+ extrato.get(i).getData() + "\n-------------------------------------------------");
+		}
+	}
+
+	public void createDate() {
+
+		Date minhaData = new Date();
+		long mili = minhaData.getTime();
+		java.sql.Date dataSQL = new java.sql.Date(mili);
+
 		setDataFinal(dataSQL);
 		setDataInicial(dataSQL);
 	}

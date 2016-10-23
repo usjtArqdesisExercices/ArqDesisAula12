@@ -1,24 +1,14 @@
-package arqdesis_aula02;
+package to;
 
-import java.util.Date;
+import java.sql.Date;
 
-public class MovimentacaoBancaria {
+public class MovimentacaoBancariaTO {
 	
 	public int	 	idCliente;
 	public double	valorRetirado;
 	public double	saldoAtual;
 	public int		tipoMovimentacao;
 	public Date		data;
-
-	public MovimentacaoBancaria(int idCliente, double valorRetirado, double saldoAtual, int tipoMovimentacao,
-			Date data) {
-		super();
-		this.idCliente = idCliente;
-		this.valorRetirado = valorRetirado;
-		this.saldoAtual = saldoAtual;
-		this.tipoMovimentacao = tipoMovimentacao;
-		this.data = data;
-	}
 
 	public int getIdCliente() {
 		return idCliente;
@@ -60,17 +50,5 @@ public class MovimentacaoBancaria {
 		this.data = data;
 	}
 	
-	public void salvaDebito(){
-		
-		MovimentacaoBancariaDAO movBancariaDAO = new MovimentacaoBancariaDAO();
-		MovimentacaoBancariaTO movBancariaTO =  new MovimentacaoBancariaTO();
-		movBancariaTO.setIdCliente(idCliente);
-		movBancariaTO.setSaldoAtual(saldoAtual);
-		movBancariaTO.setValorRetirado(valorRetirado);
-		movBancariaTO.setTipoMovimentacao(2);
-		movBancariaTO.setData((java.sql.Date) data);
-		movBancariaDAO.salvaDebito(movBancariaTO);
-		
-	}
 
 }
