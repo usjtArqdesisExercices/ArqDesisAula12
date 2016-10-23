@@ -24,18 +24,18 @@
     
     	<div id="divLabes" align="center" >
 	        <div class="form-group">
-	            <label class="sr-only" for="inputAccount">Conta</label>
-	            <input type="text" class="form-control" id="inputAccount" placeholder="Conta">
+	            <label class="sr-only" for="inputAccount" >Conta</label>
+	            <input type="text" class="form-control" id="inputAccount" placeholder="Conta" maxlength="3">
 	        </div>
 	        
 	        <div class="form-group">
 	            <label class="sr-only" for="inputAgency">Agência</label>
-	            <input type="text" class="form-control" id="inputAgency" placeholder="Agência">
+	            <input type="text" class="form-control" id="inputAgency" placeholder="Agência" maxlength="3">
 	        </div>
 	                
 	        <div class="form-group">
 	            <label class="sr-only" for="inputPassword">Senha</label>
-	            <input type="password" class="form-control" id="inputPassword" placeholder="Senha">
+	            <input type="password" class="form-control" id="inputPassword" placeholder="Senha" maxlength="6">
 	        </div>
 		</div>	        
         

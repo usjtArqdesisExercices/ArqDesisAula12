@@ -3,17 +3,15 @@
  * style.css
  */
 body {
-  padding-top: 10px;
-  background: black
- 
+	padding-top: 10px;
+	background: black
 }
 
 #divLabes {
-    padding-top: 90px;
-
+	padding-top: 90px;
 }
 
-#submitButton{
+#submitButton {
 	padding-top: 10px;
 }
 
@@ -21,7 +19,6 @@ body {
 	font-size: 250%;
 	font-family: "Times New Roman", Times, serif;
 	color: #DCDCDC;
-	
 }
 
 #loginButton {
@@ -30,5 +27,30 @@ body {
 }
 
 #inputWithdrawValue {
-	width: 50px 50px
+	width: 50px 50px;
+}
+
+#tableButtonOptions {
+	padding-top: "50px";
+	margin-top: 10px;
+}
+
+#divInitialDate {
+	margin-right: 10px;
+	margin-left: 10%;
+	color: #DCDCDC;
+}
+
+#divFinalDate {
+	margin-left: 10px;
+	margin-right: 10%;
+	color: #DCDCDC;
+}
+
+h4 {
+	font-size: 100%;
+}
+
+table {
+	width: 100%;
 }

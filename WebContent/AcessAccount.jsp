@@ -16,27 +16,41 @@
 
 <body>
 
-	<div class="acessAccount" >
+	<div class="acessAccount">
 
 	<div id="titleBankLine" align="center">
 		<h1>BankLine</h1>
 	</div>
 	    
-		<div align="center" id="submitButton" id="withdrawButton">
-	    	<button type="submit" class="btn btn-porimary"><a href="EfetuarSaque.jsp">Saque</a></button>
+	    <div id="tableButtonOptions" align="center">
+		    <table style="width:20%">
+		    	<tr>
+		    		<td>
+					<div align="center" id="submitButton" id="withdrawButton">
+				    	<button type="submit" class="btn btn-porimary"><a href="EfetuarSaque.jsp">Saque</a></button>
+					</div>
+					</td>
+					
+					<td>
+					<div align="center" id="submitButton" id="depositButton">
+				    	<button type="submit" class="btn btn-porimary"><a href="EfetuarDeposito.jsp">Deposito</a></button>
+					</div>
+					</td>
+			
+					<td>
+					<div align="center" id="submitButton" id="TransferButton">
+				    	<button type="submit" class="btn btn-porimary"><a href="EfetuarTransferencia.jsp">Transferencia</a></button>
+					</div>
+					</td>
+					
+					<td>
+					<div align="center" id="submitButton" id="ExtractButton">
+				    	<button type="submit" class="btn btn-porimary"><a href="EfetuarExtrato.jsp">Extrato</a></button>
+					</div>
+					</td>
+				</tr>
+			</table>
 		</div>
-		
-		<div align="center" id="submitButton" id="depositButton">
-	    	<button type="submit" class="btn btn-porimary"><a href="EfetuarDeposito.jsp">Deposito</a></button>
-		</div>
-
-		<div align="center" id="submitButton" id="TransferButton">
-	    	<button type="submit" class="btn btn-porimary"><a href="EfetuarTransferencia.jsp">Transferencia</a></button>
-		</div>
-		
-		<div align="center" id="submitButton" id="ExtractButton">
-	    	<button type="submit" class="btn btn-porimary"><a href="EfetuarExtrato.jsp">Extrato</a></button>
-		</div>						
         
 	</div>
 	

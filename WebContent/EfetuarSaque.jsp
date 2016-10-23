@@ -19,28 +19,25 @@
 	<div class="efetuarSaque" align="center">
 
 		<div id="titleBankLine" align="center">
-			<h1>BankLine</h1>
+			<h1>Saque</h1>
 		</div>
 
-		<table style="width:50%">
-		
+		<table style="width:50%">		
 			<tr>
 				<td align="left">
 			   		 <!-- Opções de Saque Lado esquerdo -->	    
 			    	<div id="withdrawOptions1">
-					    <ul>
-							<div align="center" id="submitButton" id="10ReaisButton">
-						    	<button type="submit" class="btn btn-porimary"><a href="EfetuarSaque.jsp" >R$ 10</a></button>
-							</div>
-							
-							<div align="center" id="submitButton" id="20ReaisButton">
-						    	<button type="submit" class="btn btn-porimary"><a href="EfetuarDeposito.jsp" >R$ 20</a></button>
-							</div>
-					
-							<div align="center" id="submitButton" id="50ReaisButton">
-						    	<button type="submit" class="btn btn-porimary"><a href="EfetuarTransferencia.jsp" >R$ 50</a></button>
-							</div>
-						</ul>
+						<div align="center" id="submitButton" id="10ReaisButton">
+					    	<button type="submit" class="btn btn-porimary" name="command" value="sacar">R$ 10</button>
+						</div>
+						
+						<div align="center" id="submitButton" id="20ReaisButton">
+					    	<button type="submit" class="btn btn-porimary">R$ 20</button>
+						</div>
+				
+						<div align="center" id="submitButton" id="50ReaisButton">
+					    	<button type="submit" class="btn btn-porimary">R$ 50</button>
+						</div>
 					</div>
 				</td>
 		
@@ -49,8 +46,10 @@
 					<div>
 						<form action='' method='post' style="width:200px">
 				            <label class="sr-only" for="inputWithdrawValue">Valor</label>
-				            <input type="text" class="form-control" id="inputWithdrawValue" size="5px"
-				            		style="width:100%;margin:-3px;border:2px" placeholder="Digite um valor">
+				            <input onchange="setTwoNumberDecimal" min="0" max="1000" step="0.25" value="0.00" type="number" class="form-control" id="inputWithdrawValue"
+				            		style="width:100%;margin:-3px;border:2px" placeholder="Digite um valor" pattern="([0-9]{10}|[.]|[0-9]{2})">
+				            		<br>
+				            <button type="submit" class="btn btn-porimary">Confirma</button>
 			            </form>			
 					</div>
 				</td>
@@ -58,27 +57,24 @@
 				<td align="right">
 					<!-- Opções de Saque Lado direito -->
 			    	<div id="withdrawOptions2" align="right">
-					    <ul>		
-							<div align="center" id="submitButton" id="100ReaisButton">
-						    	<button type="submit" class="btn btn-porimary"><a href="EfetuarExtrato.jsp" >R$ 100</a></button>
-							</div>
-							
-							<div align="center" id="submitButton" id="200ReaisButton">
-						    	<button type="submit" class="btn btn-porimary"><a href="EfetuarTransferencia.jsp" >R$ 200</a></button>
-							</div>
-							
-							<div align="center" id="submitButton" id="500ReaisButton">
-						    	<button type="submit" class="btn btn-porimary"><a href="EfetuarExtrato.jsp" >R$ 500</a></button>
-							</div>
-						</ul>
+						<div align="center" id="submitButton" id="100ReaisButton">
+					    	<button type="submit" class="btn btn-porimary">R$ 100</button>
+						</div>
+						
+						<div align="center" id="submitButton" id="200ReaisButton">
+					    	<button type="submit" class="btn btn-porimary">R$ 200</button>
+						</div>
+						
+						<div align="center" id="submitButton" id="500ReaisButton">
+					    	<button type="submit" class="btn btn-porimary">R$ 500</button>
+						</div>
 					</div>
 				</td>
 			</tr>
-				
 		</table>		
-        
 	</div>
-
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
