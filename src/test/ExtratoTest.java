@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import model.Extrato;
 
-public class ExtratoTeste {
+public class ExtratoTest {
 
 	Extrato movBanc, copy;
 	java.util.Date utilDate = new java.util.Date();
@@ -15,7 +15,7 @@ public class ExtratoTeste {
 	@Before
 	public void setUP() throws Exception {
 
-/*		movBanc = new Extrato(1, 100.00, 1000.00, 2, 2, sqlDate);
+	/*	movBanc = new Extrato(1, 100.00, 1000.00, 2, 2, sqlDate);
 		copy = new Extrato(1, 100.00, 1000.00, 2, 2, movBanc.getData());
 	}
 
@@ -67,11 +67,11 @@ public class ExtratoTeste {
 		novo.setSaldoAtual(fixture.consultaExtrato().get(last - 1).getSaldoAtual());
 		novo.setData((java.sql.Date) fixture.getData());
 		novo.setDataFinal((java.sql.Date) fixture.getDataFinal());
-		novo.setDataInicial((java.sql.Date) fixture.getDataInicial());*/
+		novo.setDataInicial((java.sql.Date) fixture.getDataInicial());
 		
 		//System.out.println("Data Incial: " + (java.sql.Date) fixture.getDataInicial() + "\nDataFinal: " + (java.sql.Date) fixture.getDataFinal() );
 
-		//assertEquals("Teste Carregar Primeiro Extrato", fixture, novo);
+		assertEquals("Teste Carregar Primeiro Extrato", fixture, novo);*/
 	}{
 		
 	}

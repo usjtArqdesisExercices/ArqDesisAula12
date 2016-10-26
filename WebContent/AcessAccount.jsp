@@ -16,7 +16,10 @@
 
 <body>
 
-	<div class="acessAccount">
+	<!-- Barra superior com os menus de navegação -->
+	<c:import url="menu.jsp" />
+
+	<div class="acessAccount" id="mainDiv">
 
 	<div id="titleBankLine" align="center">
 		<h1>BankLine</h1>

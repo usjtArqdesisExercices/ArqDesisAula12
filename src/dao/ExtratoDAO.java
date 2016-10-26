@@ -1,46 +1,72 @@
 package dao;
 
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.Date;
-
-import factory.ConnectionFactory;
-import to.ExtratoTO;
-
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import factory.ConnectionFactory;
+import to.ExtratoTO;
+import to.ListaExtrato;
 
 public class ExtratoDAO {
 
-	public ArrayList<ExtratoTO> consultaExtrato(ExtratoTO to) {
+	public ExtratoDAO() {
 
-		ArrayList<ExtratoTO> extrato = new ArrayList<>();
+	}
 
-		String sqlSelect = "SELECT * FROM MovimentacaoBancaria WHERE CodCliente = ? and DataMovimentacao >= ? and DataMovimentacao <= ?";
+	public void salvaExtrato(ExtratoTO to) {
+
+		String sqlInsert = "INSERT INTO MOVIMENTACAO_BANCARIA (CodCliente, IdTipoMovimentacao, TipoCredDeb, ValorMovimentacao, SaldoAtual, DataMovimentacao) VALUES (?, ?, ?, ?, ?, ?)";
+
+		try (Connection conn = ConnectionFactory.obtemConexao();
+				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
+
+			stm.setInt(1, to.getIdCliente());
+			stm.setInt(2, to.getIdTipoMovimentacao()); // 1 - Transferencia / 2 -
+														// Saque / 3 - Debito
+														// Auto
+			stm.setInt(3, to.getTipoCredDeb()); // 1 - Credito / 2 - Debito
+			stm.setDouble(4, to.getValorMovimentacao());
+			stm.setDouble(5, to.getSaldoAtual());
+			stm.setDate(6, to.getData());
+			stm.executeUpdate();
+			stm.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public ListaExtrato consultaExtrato(int idCliente, Date dataInicial, Date dataFinal) {
+		
+		
+		ExtratoTO extratoTO;
+		ArrayList<ExtratoTO> listaExtrato = new ArrayList<>();
+
+		String sqlSelect = "SELECT * FROM MOVIMENTACAO_BANCARIA WHERE CodCliente = ? and DataMovimentacao >= ? and DataMovimentacao <= ?";
 
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
-			stm.setInt(1, to.getIdCliente());
-			stm.setString(2, "2016-08-13");
-			stm.setString(3, "2016-08-13");
-			/*
-			 * stm.setDate(2, to.getDataInicial()); stm.setDate(3,
-			 * to.getDataFinal());
-			 */
+			stm.setInt(1, idCliente);
+			stm.setDate(2, dataInicial);
+			stm.setDate(3, dataFinal);
+			 
 
 			try (ResultSet rs = stm.executeQuery();) {
 
 				while (rs.next()) {
 
-					to = new ExtratoTO();
-					to.setIdCliente(rs.getInt("CodCliente"));
-					to.setTipoMovimentacao(rs.getInt("TipoMovimentacao"));
-					to.setTipo(rs.getInt("Tipo"));
-					to.setValorMovimentacao(rs.getDouble("ValorMovimentacao"));
-					to.setSaldoAtual(rs.getDouble("SaldoAtual"));
-					to.setData(rs.getDate("DataMovimentacao"));
-					extrato.add(to);
+					extratoTO = new ExtratoTO();
+					extratoTO.setIdCliente(rs.getInt("CodCliente"));
+					extratoTO.setIdTipoMovimentacao(rs.getInt("IdTipoMovimentacao"));
+					extratoTO.setTipoCredDeb(rs.getInt("TipoCredDeb"));
+					extratoTO.setValorMovimentacao(rs.getDouble("ValorMovimentacao"));
+					extratoTO.setSaldoAtual(rs.getDouble("SaldoAtual"));
+					extratoTO.setData(rs.getDate("DataMovimentacao"));
+					listaExtrato.add(extratoTO);
 				}
 
 			} catch (SQLException e) {
@@ -53,7 +79,9 @@ public class ExtratoDAO {
 			e.printStackTrace();
 		}
 
-		return extrato;
-	}
+		ListaExtrato lde = new ListaExtrato();
+		lde.setExtrato(listaExtrato);
+		return lde;
+	}	
 
 }

@@ -4,7 +4,7 @@
  */
 body {
 	padding-top: 10px;
-	background: black
+	background: #e6e6e6;
 }
 
 #divLabes {
@@ -18,7 +18,7 @@ body {
 #titleBankLine {
 	font-size: 250%;
 	font-family: "Times New Roman", Times, serif;
-	color: #DCDCDC;
+	color: #4d4d4d;
 }
 
 #loginButton {
@@ -49,8 +49,13 @@ body {
 
 h4 {
 	font-size: 100%;
+	color: #DCDCDC;
 }
 
 table {
 	width: 100%;
+}
+
+#mainDiv {
+	padding-top: 20px;
 }
