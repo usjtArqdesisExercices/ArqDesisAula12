@@ -40,7 +40,7 @@
 		</div>	        
         
 		<div align="center" id="submitButton" id="loginButton">
-	    	<button type="submit" class="btn btn-porimary"><a href="AcessAccount.jsp" >Login</a></button>
+	    	<a href="AcessAccount.jsp" ><button type="button" class="btn btn-porimary">Login</button></a>
 		</div>
         
     </form>

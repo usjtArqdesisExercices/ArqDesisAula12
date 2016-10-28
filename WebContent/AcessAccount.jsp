@@ -30,25 +30,25 @@
 		    	<tr>
 		    		<td>
 					<div align="center" id="submitButton" id="withdrawButton">
-				    	<button type="submit" class="btn btn-porimary"><a href="EfetuarSaque.jsp">Saque</a></button>
+				    	<a href="Saque.do?acao=reiniciar"><button type="submit" class="btn btn-porimary">Saque</button></a>
 					</div>
 					</td>
 					
 					<td>
 					<div align="center" id="submitButton" id="depositButton">
-				    	<button type="submit" class="btn btn-porimary"><a href="EfetuarDeposito.jsp">Deposito</a></button>
+				    	<a href="#"><button type="submit" class="btn btn-porimary">Deposito</button></a>
 					</div>
 					</td>
 			
 					<td>
 					<div align="center" id="submitButton" id="TransferButton">
-				    	<button type="submit" class="btn btn-porimary"><a href="EfetuarTransferencia.jsp">Transferencia</a></button>
+				    	<a href="#"><button type="submit" class="btn btn-porimary">Transferencia</button></a>
 					</div>
 					</td>
 					
 					<td>
 					<div align="center" id="submitButton" id="ExtractButton">
-				    	<button type="submit" class="btn btn-porimary"><a href="EfetuarExtrato.jsp">Extrato</a></button>
+				    	<a href="Extrato.do?acao=reiniciar"><button type="submit" class="btn btn-porimary">Extrato</button></a>
 					</div>
 					</td>
 				</tr>

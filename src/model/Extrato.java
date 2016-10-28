@@ -1,10 +1,10 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
-import controller.Data;
 import dao.ExtratoDAO;
 import to.ExtratoTO;
-import to.ListaExtrato;
+
 
 public class Extrato {
 
@@ -84,9 +84,9 @@ public class Extrato {
 
 	}
 
-	public ListaExtrato consultaExtrato(int idCliente) {
+	public ArrayList<ExtratoTO> consultaExtrato(int idCliente) {
 
-		ListaExtrato listaExtrato;
+		ArrayList<ExtratoTO>  listaExtrato;
 		ExtratoDAO extDAO = new ExtratoDAO();
 
 		listaExtrato = extDAO.consultaExtrato(idCliente, (java.sql.Date) dataInicial, (java.sql.Date) dataFinal);

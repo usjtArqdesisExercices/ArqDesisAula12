@@ -16,13 +16,14 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/bootstrap/css/loginStyle.css" />
+
 </head>
 
 <body>
 
 	<!-- Barra superior com os menus de navegação -->
 	<c:import url="menu.jsp" />
-	
+
 	<div id="mainDiv" class="efetuarExtrato">
 
 		<div id="titleBankLine" align="center">
@@ -59,7 +60,7 @@
 								<input type="date" class="form-control" id="inputInitialDate"
 									size="5px" style="width: 100%; margin: -3px"
 									placeholder="Data Inicial" min="1979-12-31" max="2100-01-01"
-									name="data[dataInicial]">
+									name="data[dataInicial] " required>
 							</div>
 						</td>
 						<td align="left">
@@ -70,8 +71,8 @@
 								</h4>
 								<input type="date" class="form-control" id="inputFinalDate"
 									size="5px" style="width: 100%; margin: -3px"
-									placeholder="Data Final" name="data[dataFinal]"
-									min="1979-12-31" max="2100-01-01">
+									placeholder="Data Final" min="1979-12-31" max="2100-01-01"
+									name="data[dataFinal]" required>
 							</div>
 						</td>
 					</tr>
@@ -85,60 +86,58 @@
 			</form>
 		</div>
 
-		<jsp:useBean id="listaExtrato" class="to.ListaExtrato" scope="request" />
 		<c:set var="tipoMov" scope="session" value="#" />
+
 		<c:if test="${not empty listaExtrato}">
-			<c:if test="${not empty listaExtrato.extrato}">
-				<div id="list" class="row">
-					<div class="table-responsive col-md-12" align="center">
-						<table class="table table-striped" style="width: 50%">
-							<thead>
+			<div id="list" class="row">
+				<div class="table-responsive col-md-12" align="center">
+					<table class="table table-striped" style="width: 50%">
+						<thead>
+							<tr>
+								<th>Valor Da Movimentacao</th>
+								<th>Valor Saldo Atual</th>
+								<th>Tipo Movimentação</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="varExtrato" items="${listaExtrato}"
+								varStatus="loop">
 								<tr>
-									<th>Valor Da Movimentacao</th>
-									<th>Valor Saldo Atual</th>
-									<th>Tipo Movimentação</th>
+									<td>${varExtrato.valorMovimentacao }</td>
+									<td>${varExtrato.saldoAtual }</td>
+
+
+									<c:if test="${varExtrato.idTipoMovimentacao == '1'}">
+										<c:set var="tipoMov" scope="session" value="TRANSFERENCIA" />
+									</c:if>
+									<c:if test="${varExtrato.idTipoMovimentacao == '2'}">
+										<c:set var="tipoMov" scope="session" value="SAQUE" />
+									</c:if>
+									<c:if test="${varExtrato.idTipoMovimentacao == '3'}">
+										<c:set var="tipoMov" scope="session" value="DEBITO AUTO." />
+									</c:if>
+
+									<td><c:out value="${tipoMov}" /></td>
+
+									<c:if
+										test="${varExtrato.data != listaExtrato[loop.index + 1].data && data != '#' || loop.last}">
+										<tr align="right">
+											<td colspan="3">Saldo do Dia: <c:out
+													value="${varExtrato.saldoAtual }" /> / Data Movimentação:
+												<c:out value="${varExtrato.data }" /></td>
+										</tr>
+									</c:if>
+
 								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="varExtrato" items="${listaExtrato.extrato}"
-									varStatus="loop">
-									<tr>
-										<td>${varExtrato.valorMovimentacao }</td>
-										<td>${varExtrato.saldoAtual }</td>
+							</c:forEach>
 
+						</tbody>
+					</table>
 
-										<c:if test="${varExtrato.idTipoMovimentacao == '1'}">
-											<c:set var="tipoMov" scope="session" value="TRANSFERENCIA" />
-										</c:if>
-										<c:if test="${varExtrato.idTipoMovimentacao == '2'}">
-											<c:set var="tipoMov" scope="session" value="SAQUE" />
-										</c:if>
-										<c:if test="${varExtrato.idTipoMovimentacao == '3'}">
-											<c:set var="tipoMov" scope="session" value="DEBITO AUTO." />
-										</c:if>
-
-										<td><c:out value="${tipoMov}" /></td>
-
-										<c:if
-											test="${varExtrato.data != listaExtrato.extrato[loop.index + 1].data && data != '#' || loop.last}">
-											<tr align="right">
-												<td colspan="3">Saldo do Dia: <c:out
-														value="${varExtrato.saldoAtual }" /> / Data Movimentação:
-													<c:out value="${varExtrato.data }" /></td>
-											</tr>
-										</c:if>
-
-									</tr>
-								</c:forEach>
-
-							</tbody>
-						</table>
-
-					</div>
 				</div>
-				<!-- /#list -->
+			</div>
+			<!-- /#list -->
 
-			</c:if>
 		</c:if>
 
 	</div>

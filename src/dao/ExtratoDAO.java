@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import factory.ConnectionFactory;
 import to.ExtratoTO;
-import to.ListaExtrato;
 
 public class ExtratoDAO {
 
@@ -24,7 +23,8 @@ public class ExtratoDAO {
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 
 			stm.setInt(1, to.getIdCliente());
-			stm.setInt(2, to.getIdTipoMovimentacao()); // 1 - Transferencia / 2 -
+			stm.setInt(2, to.getIdTipoMovimentacao()); // 1 - Transferencia / 2
+														// -
 														// Saque / 3 - Debito
 														// Auto
 			stm.setInt(3, to.getTipoCredDeb()); // 1 - Credito / 2 - Debito
@@ -39,10 +39,9 @@ public class ExtratoDAO {
 		}
 
 	}
-	
-	public ListaExtrato consultaExtrato(int idCliente, Date dataInicial, Date dataFinal) {
-		
-		
+
+	public ArrayList<ExtratoTO> consultaExtrato(int idCliente, Date dataInicial, Date dataFinal) {
+
 		ExtratoTO extratoTO;
 		ArrayList<ExtratoTO> listaExtrato = new ArrayList<>();
 
@@ -53,7 +52,6 @@ public class ExtratoDAO {
 			stm.setInt(1, idCliente);
 			stm.setDate(2, dataInicial);
 			stm.setDate(3, dataFinal);
-			 
 
 			try (ResultSet rs = stm.executeQuery();) {
 
@@ -79,9 +77,7 @@ public class ExtratoDAO {
 			e.printStackTrace();
 		}
 
-		ListaExtrato lde = new ListaExtrato();
-		lde.setExtrato(listaExtrato);
-		return lde;
-	}	
+		return listaExtrato;
+	}
 
 }

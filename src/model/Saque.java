@@ -1,11 +1,10 @@
 package model;
 
 import java.sql.Date;
-
-import controller.Data;
 import model.Extrato;
 import dao.SaqueDAO;
 import to.ExtratoTO;
+import to.ListaExtrato;
 import to.SaqueTO;
 
 public class Saque {
@@ -77,8 +76,8 @@ public class Saque {
 	}
 
 	public void salvaMovBanc() {
-		
-		Extrato extrato = new Extrato();		
+
+		Extrato extrato = new Extrato();
 		ExtratoTO extratoTO = new ExtratoTO();
 		extratoTO.setIdCliente(idCliente);
 		extratoTO.setSaldoAtual(saldoAtual);
@@ -90,40 +89,36 @@ public class Saque {
 		extrato.salvaExtrato(extratoTO);
 	}
 
-	public SaqueTO carregaUtilmoSaque() {
+	public void carregaUtilmoSaque(int id) {
 
 		SaqueDAO saqueDAO = new SaqueDAO();
-		SaqueTO saqueTO = saqueDAO.carregaUtilmoSaque(idCliente);
+		SaqueTO saqueTO = saqueDAO.carregaUtilmoSaque(id);
 
-		setIdCliente(saqueTO.getIdCliente());
-		setValorSaque(saqueTO.getValorSaque());
-		setSaldoAtual(saqueTO.getSaldoAtual());
-		setData(saqueTO.getData());
-		
+		idCliente = saqueTO.getIdCliente();
+		valorSaque = saqueTO.getValorSaque();
+		saldoAtual = saqueTO.getSaldoAtual();
+		data = saqueTO.getData();
+
+	}
+
+	public SaqueTO getSaqueTO() {
+		SaqueTO saqueTO = new SaqueTO();
+		saqueTO.setIdCliente(idCliente);
+		saqueTO.setValorSaque(valorSaque);
+		saqueTO.setSaldoAtual(saldoAtual);
+		saqueTO.setData(data);
+
 		return saqueTO;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Saque other = (Saque) obj;
-		if (idCliente != other.idCliente)
-			return false;
-		if (saldoAtual != other.saldoAtual)
-			return false;
-		if (valorSaque != other.valorSaque)
-			return false;
-		if (data == null) {
-			if (other.data != null)
-				return false;
-		} else if (!data.equals(other.data))
-			return false;
-		return true;
-	}
+	/*
+	 * @Override public boolean equals(Object obj) { if (this == obj) return
+	 * true; if (obj == null) return false; if (getClass() != obj.getClass())
+	 * return false; Saque other = (Saque) obj; if (idCliente !=
+	 * other.idCliente) return false; if (saldoAtual != other.saldoAtual) return
+	 * false; if (valorSaque != other.valorSaque) return false; if (data ==
+	 * null) { if (other.data != null) return false; } else if
+	 * (!data.equals(other.data)) return false; return true; }
+	 */
 
 }

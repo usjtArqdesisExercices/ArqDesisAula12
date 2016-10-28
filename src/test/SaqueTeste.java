@@ -26,7 +26,7 @@ public class SaqueTeste {
 		saque.setData(sqlDate);
 		saque.efetuarSaque();
 		
-		saque.carregaUtilmoSaque();
+		/*saque.carregaUtilmoSaque();*/
 		
 		Saque fixture = new Saque(); 
 		fixture.setIdCliente(saque.getIdCliente());
@@ -69,7 +69,7 @@ public class SaqueTeste {
 		
 		Saque fixture = new Saque();
 		fixture.setIdCliente(3);
-		fixture.carregaUtilmoSaque();
+		//fixture.carregaUtilmoSaque();
 		
 		
 	}

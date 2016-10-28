@@ -30,7 +30,14 @@
 			<h1>Saque</h1>
 		</div>
 
-		<jsp:useBean id="mostrarSaldo" class="to.SaqueTO" scope="request" />
+		<c:if test="${not empty ultimoSaldo.saldoAtual}">
+			<script type="text/javascript">
+				$(window).load(function() {
+					$('#saldo-modal').modal('show');
+				});
+			</script>
+		</c:if>
+
 		<!-- Modal -->
 		<div class="modal fade" id="saldo-modal" tabindex="-1" role="dialog"
 			aria-labelledby="modalLabel">
@@ -43,7 +50,7 @@
 						</button>
 						<h3 class="modal-title" id="modalLabel">Saldo Atual</h3>
 					</div>
-					<div class="modal-body">R$ ${mostrarSaldo.saldoAtual}</div>
+					<div class="modal-body">R$ ${ultimoSaldo.saldoAtual}</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
 					</div>
@@ -81,7 +88,7 @@
 								min="0" max="1000" value="0.00" type="number"
 								class="form-control" id="inputWithdrawValue" name="data[valor]"
 								style="width: 50%; margin: -3px; border: 2px"
-								placeholder="Digite um valor" pattern="([0-9]{10}|[.]|[0-9]{2})">
+								placeholder="Digite um valor" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" required>
 							<br>
 							<button type="submit" class="btn btn-porimary" name="acao"
 								value="outroValor">Confirma</button>
@@ -114,11 +121,7 @@
 	<!-- /#main -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		$(window).load(function() {
-			$('#saldo-modal').modal('show');
-		});
-	</script>
+
 </body>
 
 </html>
