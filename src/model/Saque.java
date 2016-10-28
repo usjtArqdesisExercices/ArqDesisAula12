@@ -4,7 +4,6 @@ import java.sql.Date;
 import model.Extrato;
 import dao.SaqueDAO;
 import to.ExtratoTO;
-import to.ListaExtrato;
 import to.SaqueTO;
 
 public class Saque {

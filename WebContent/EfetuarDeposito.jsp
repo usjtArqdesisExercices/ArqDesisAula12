@@ -23,19 +23,19 @@
 	</div>
 	    
 		<div align="center" id="submitButton" id="withdrawButton">
-	    	<button type="submit" class="btn btn-porimary"><a href="EfetuarSaque.jsp" >Saque</a></button>
+	    	<a href="EfetuarSaque.jsp" ><button type="submit" class="btn btn-porimary">Saque</button></a>
 		</div>
 		
 		<div align="center" id="submitButton" id="depositButton">
-	    	<button type="submit" class="btn btn-porimary"><a href="EfetuarDeposito.jsp" >Deposito</a></button>
+	    	<a href="EfetuarDeposito.jsp" ><button type="submit" class="btn btn-porimary">Deposito</button></a>
 		</div>
 
 		<div align="center" id="submitButton" id="TransferButton">
-	    	<button type="submit" class="btn btn-porimary"><a href="EfetuarTransferencia.jsp" >Transferencia</a></button>
+	    	<a href="EfetuarTransferencia.jsp" ><button type="submit" class="btn btn-porimary">Transferencia</button></a>
 		</div>
 		
 		<div align="center" id="submitButton" id="ExtractButton">
-	    	<button type="submit" class="btn btn-porimary"><a href="EfetuarExtrato.jsp" >Extrato</a></button>
+	    	<a href="EfetuarExtrato.jsp" ><button type="submit" class="btn btn-porimary">Extrato</button></a>
 		</div>						
         
 	</div>

@@ -30,7 +30,7 @@
 		    	<tr>
 		    		<td>
 					<div align="center" id="submitButton" id="withdrawButton">
-				    	<a href="Saque.do?acao=reiniciar"><button type="submit" class="btn btn-porimary">Saque</button></a>
+				    	<a href="Controller.do?command=SaqueReiniciar"><button type="submit" class="btn btn-porimary">Saque</button></a>
 					</div>
 					</td>
 					
@@ -48,7 +48,7 @@
 					
 					<td>
 					<div align="center" id="submitButton" id="ExtractButton">
-				    	<a href="Extrato.do?acao=reiniciar"><button type="submit" class="btn btn-porimary">Extrato</button></a>
+				    	<a href="Controller.do?command=ExtratoReiniciar"><button type="submit" class="btn btn-porimary">Extrato</button></a>
 					</div>
 					</td>
 				</tr>

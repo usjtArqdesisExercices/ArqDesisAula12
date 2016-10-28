@@ -14,10 +14,10 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="Saque.do?acao=reiniciar">Saque</a></li>
+				<li><a href="Controller.do?command=SaqueReiniciar">Saque</a></li>
 				<li><a href="#">Deposito</a></li>
 				<li><a href="#">Transferencia</a></li>
-				<li><a href="Extrato.do?acao=reiniciar">Extrato</a></li>
+				<li><a href="Controller.do?command=ExtratoReiniciar">Extrato</a></li>
 			</ul>
 		</div>
 	</div>

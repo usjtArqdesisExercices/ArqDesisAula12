@@ -31,21 +31,21 @@
 		</div>
 
 		<div id="tableExtractOptions" align="center">
-			<form action="Extrato.do" method="post">
+			<form action="Controller.do" method="post">
 				<table style="width: 25%">
 					<tr>
 						<td align="right">
-							<div id="submitButton" id="7DiasButton">
-								<button type="submit" class="btn btn-porimary" name="acao"
-									value="7Dias">7 Dias</button>
+							<div id="7DiasButton">
+								<button type="submit" class="btn btn-porimary" name="command"
+									value="Extrato7Dias">7 Dias</button>
 								&nbsp;
 							</div>
 						</td>
 						<td align="left">
-							<div id="submitButton" id="15DiasButton">
+							<div id="15DiasButton">
 								&nbsp;
-								<button type="submit" class="btn btn-porimary" name="acao"
-									value="15Dias">15 Dias</button>
+								<button type="submit" class="btn btn-porimary" name="command"
+									value="Extrato15Dias">15 Dias</button>
 							</div>
 						</td>
 					</tr>
@@ -60,7 +60,7 @@
 								<input type="date" class="form-control" id="inputInitialDate"
 									size="5px" style="width: 100%; margin: -3px"
 									placeholder="Data Inicial" min="1979-12-31" max="2100-01-01"
-									name="data[dataInicial] " required>
+									name="data[dataInicial]">
 							</div>
 						</td>
 						<td align="left">
@@ -72,14 +72,14 @@
 								<input type="date" class="form-control" id="inputFinalDate"
 									size="5px" style="width: 100%; margin: -3px"
 									placeholder="Data Final" min="1979-12-31" max="2100-01-01"
-									name="data[dataFinal]" required>
+									name="data[dataFinal]">
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><br>
-							<button type="submit" class="btn btn-porimary" name="acao"
-								value="outraData">Confirma</button>
+							<button type="submit" class="btn btn-porimary" name="command"
+								value="ExtratoOutraData">Confirma</button>
 						<td>
 					</tr>
 				</table>
@@ -103,7 +103,14 @@
 							<c:forEach var="varExtrato" items="${listaExtrato}"
 								varStatus="loop">
 								<tr>
-									<td>${varExtrato.valorMovimentacao }</td>
+
+									<c:if test="${varExtrato.tipoCredDeb == '1'}">
+										<td><c:out value="+${varExtrato.valorMovimentacao }" /></td>
+									</c:if>
+									<c:if test="${varExtrato.tipoCredDeb == '2'}">
+										<td><c:out value="-${varExtrato.valorMovimentacao }" /></td>
+									</c:if>
+
 									<td>${varExtrato.saldoAtual }</td>
 
 
@@ -116,7 +123,10 @@
 									<c:if test="${varExtrato.idTipoMovimentacao == '3'}">
 										<c:set var="tipoMov" scope="session" value="DEBITO AUTO." />
 									</c:if>
-
+									<c:if test="${varExtrato.idTipoMovimentacao == '4'}">
+										<c:set var="tipoMov" scope="session" value="DEPOSITO" />
+									</c:if>
+									
 									<td><c:out value="${tipoMov}" /></td>
 
 									<c:if
