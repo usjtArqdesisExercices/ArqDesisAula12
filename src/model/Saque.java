@@ -17,13 +17,6 @@ public class Saque {
 
 	}
 
-	public Saque(int idCliente, double valorSaque, double saldoAtual) {
-		super();
-		this.idCliente = idCliente;
-		this.valorSaque = valorSaque;
-		this.saldoAtual = saldoAtual;
-	}
-
 	public double getValorSaque() {
 		return valorSaque;
 	}

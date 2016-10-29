@@ -22,7 +22,7 @@
 <body>
 
 	<!-- Barra superior com os menus de navegação -->
-	<c:import url="menu.jsp" />
+	<c:import url="Menu.jsp" />
 
 	<div id="mainDiv" class="efetuarExtrato">
 

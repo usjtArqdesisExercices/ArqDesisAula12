@@ -8,51 +8,10 @@ import to.ExtratoTO;
 
 public class Extrato {
 
-	/*public int idCliente;
-	public double valorMovimentacao;
-	public double saldoAtual;
-	public int IdTipoMovimentacao;
-	public int tipoCredDeb;
-	public Date data;*/
 	private Date dataInicial;
 	private Date dataFinal;
 
-	/*public Extrato(int idCliente, double valorRetirado, double saldoAtual, int tipoMovimentacao, int tipoCredDeb,
-			Date data) {
-		super();
-		this.idCliente = idCliente;
-		this.valorMovimentacao = valorRetirado;
-		this.saldoAtual = saldoAtual;
-		this.IdTipoMovimentacao = tipoMovimentacao;
-		this.data = data;
-		this.tipoCredDeb = tipoCredDeb;
-	}
-
-	public Extrato() {
-		super();
-
-	}
-
-	public int getIdCliente() {
-		return idCliente;
-	}
-
-	public double getValorMovimentacao() {
-		return valorMovimentacao;
-	}
-
-	public double getSaldoAtual() {
-		return saldoAtual;
-	}
-
-	public int getIdTipoMovimentacao() {
-		return IdTipoMovimentacao;
-	}
-
-	public int getTipoCredDeb() {
-		return tipoCredDeb;
-	}*/
-
+	
 	public Date getDataInicial() {
 		return dataInicial;
 	}
@@ -91,13 +50,6 @@ public class Extrato {
 
 		listaExtrato = extDAO.consultaExtrato(idCliente, (java.sql.Date) dataInicial, (java.sql.Date) dataFinal);
 		
-		/*for (int i = 0; i < extrato.size(); i++) {
-			System.out.println("ID do Cliente: " + extrato.get(i).getIdCliente() + "\nValor Da Movimentacao: "
-					+ extrato.get(i).getValorMovimentacao() + "\nValor Saldo Atual: " + extrato.get(i).getSaldoAtual()
-					+ "\nTipo Movimentação: " + extrato.get(i).getIdTipoMovimentacao() + "\nData Movimentacao: "
-					+ extrato.get(i).getData() + "\n-------------------------------------------------");
-		}*/
-
 		return listaExtrato;
 	}
 

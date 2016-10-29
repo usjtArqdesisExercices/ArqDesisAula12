@@ -16,8 +16,8 @@ public class SaqueTeste {
 	@Before
 	public void setUp() throws Exception {
 
-		saque = new Saque(3, 25.00, 1000.00);
-		copy = new Saque(3, 25.00, 1000.00);
+		/*saque = new Saque(3, 25.00, 1000.00);
+		copy = new Saque(3, 25.00, 1000.00);*/
 	}
 
 	@Test
@@ -64,8 +64,8 @@ public class SaqueTeste {
 	@Test
 	public void test02CarregaUltimoSaque() {
 		
-		Saque copy = new Saque(3, 25.00, 1000.00);
-		copy.setData(sqlDate);
+		/*Saque copy = new Saque(3, 25.00, 1000.00);
+		copy.setData(sqlDate);*/
 		
 		Saque fixture = new Saque();
 		fixture.setIdCliente(3);

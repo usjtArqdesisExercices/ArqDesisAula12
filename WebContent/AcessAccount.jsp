@@ -17,7 +17,7 @@
 <body>
 
 	<!-- Barra superior com os menus de navegação -->
-	<c:import url="menu.jsp" />
+	<c:import url="Menu.jsp" />
 
 	<div class="acessAccount" id="mainDiv">
 
@@ -48,7 +48,7 @@
 					
 					<td>
 					<div align="center" id="submitButton" id="ExtractButton">
-				    	<a href="Controller.do?command=ExtratoReiniciar"><button type="submit" class="btn btn-porimary">Extrato</button></a>
+				    	<a href="EfetuarExtrato.jsp"><button type="button" class="btn btn-porimary">Extrato</button></a>
 					</div>
 					</td>
 				</tr>

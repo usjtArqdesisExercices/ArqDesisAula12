@@ -21,7 +21,7 @@
 <body>
 
 	<!-- Barra superior com os menus de navegação -->
-	<c:import url="menu.jsp" />
+	<c:import url="Menu.jsp" />
 
 	<div class="efetuarSaque" id="mainDiv" align="center"
 		class="page-header">

@@ -20,27 +20,28 @@
 	<div id="titleBankLine" align="center">
 		<h1>BankLine</h1>
 	</div>
-    <form class="form-inline" role="form">
+	
+    <form action="Controller.do" method="post" class="form-inline" role="form">
     
     	<div id="divLabes" align="center" >
 	        <div class="form-group">
 	            <label class="sr-only" for="inputAccount" >Conta</label>
-	            <input type="text" class="form-control" id="inputAccount" placeholder="Conta" maxlength="3">
+	            <input type="text" class="form-control" id="inputAccount" name="data[conta]" placeholder="Conta" maxlength="3">
 	        </div>
 	        
 	        <div class="form-group">
 	            <label class="sr-only" for="inputAgency">Agência</label>
-	            <input type="text" class="form-control" id="inputAgency" placeholder="Agência" maxlength="3">
+	            <input type="text" class="form-control" id="inputAgency" name="data[agencia]" placeholder="Agência" maxlength="3">
 	        </div>
 	                
 	        <div class="form-group">
 	            <label class="sr-only" for="inputPassword">Senha</label>
-	            <input type="password" class="form-control" id="inputPassword" placeholder="Senha" maxlength="6">
+	            <input type="password" class="form-control" id="inputPassword" name="data[senha]" placeholder="Senha" maxlength="6">
 	        </div>
 		</div>	        
-        
+        <br>
 		<div align="center" id="submitButton" id="loginButton">
-	    	<a href="AcessAccount.jsp" ><button type="button" class="btn btn-porimary">Login</button></a>
+	    	<button type="submit" class="btn btn-porimary" name="command" value="FazerLogin">Login</button>
 		</div>
         
     </form>
