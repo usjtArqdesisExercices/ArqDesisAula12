@@ -4,10 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import factory.ConnectionFactory;
 import to.SaqueTO;
 
 public class SaqueDAO {
+
+	private Connection conn;
+
+	public SaqueDAO(Connection conn) {
+		this.conn = conn;
+	}
 
 	public SaqueDAO() {
 
@@ -17,14 +22,12 @@ public class SaqueDAO {
 
 		String sqlInsert = "INSERT INTO Saque (CodCliente, ValorSaque, SaldoAtual, DataSaque) VALUES (?, ?, ?, ?)";
 
-		try (Connection conn = ConnectionFactory.obtemConexao();
-				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
+		try (PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 			stm.setInt(1, to.getIdCliente());
 			stm.setDouble(2, to.getValorSaque());
 			stm.setDouble(3, to.getSaldoAtual());
 			stm.setDate(4, to.getData());
 			stm.execute();
-			stm.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,8 +42,7 @@ public class SaqueDAO {
 
 		String sqlSelect = "SELECT * FROM Saque where idSaque = (select max(idSaque) from SAQUE where CodCliente = ?)";
 
-		try (Connection conn = ConnectionFactory.obtemConexao();
-				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+		try (PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
 
 			stm.setInt(1, idCliente);
 			try (ResultSet rs = stm.executeQuery();) {

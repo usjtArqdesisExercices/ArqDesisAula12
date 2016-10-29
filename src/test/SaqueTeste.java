@@ -24,7 +24,7 @@ public class SaqueTeste {
 	public void test00EfetuarSaque() {
 		
 		saque.setData(sqlDate);
-		saque.efetuarSaque();
+		//saque.efetuarSaque();
 		
 		/*saque.carregaUtilmoSaque();*/
 		

@@ -36,19 +36,17 @@ public class Extrato {
 		setDataFinal(data.retornaDataHoje());
 	}
 
-	public void salvaExtrato(ExtratoTO extratoTO) {
+	public void salvaExtrato(ExtratoTO extratoTO, ExtratoDAO extratoDAO) {
 
-		ExtratoDAO extratoDAO = new ExtratoDAO();
 		extratoDAO.salvaExtrato(extratoTO);
 
 	}
 
-	public ArrayList<ExtratoTO> consultaExtrato(int idCliente) {
+	public ArrayList<ExtratoTO> consultaExtrato(int idCliente, ExtratoDAO extratoDAO) {
 
 		ArrayList<ExtratoTO>  listaExtrato;
-		ExtratoDAO extDAO = new ExtratoDAO();
 
-		listaExtrato = extDAO.consultaExtrato(idCliente, (java.sql.Date) dataInicial, (java.sql.Date) dataFinal);
+		listaExtrato = extratoDAO.consultaExtrato(idCliente, (java.sql.Date) dataInicial, (java.sql.Date) dataFinal);
 		
 		return listaExtrato;
 	}

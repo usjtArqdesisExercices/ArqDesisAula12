@@ -6,10 +6,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import factory.ConnectionFactory;
 import to.ExtratoTO;
 
 public class ExtratoDAO {
+
+	private Connection conn;
+
+	public ExtratoDAO(Connection conn) {
+		this.conn = conn;
+	}
 
 	public ExtratoDAO() {
 
@@ -19,8 +24,7 @@ public class ExtratoDAO {
 
 		String sqlInsert = "INSERT INTO MOVIMENTACAO_BANCARIA (CodCliente, IdTipoMovimentacao, TipoCredDeb, ValorMovimentacao, SaldoAtual, DataMovimentacao) VALUES (?, ?, ?, ?, ?, ?)";
 
-		try (Connection conn = ConnectionFactory.obtemConexao();
-				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
+		try (PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 
 			stm.setInt(1, to.getIdCliente());
 			stm.setInt(2, to.getIdTipoMovimentacao()); // 1 - Transferencia / 2
@@ -32,7 +36,6 @@ public class ExtratoDAO {
 			stm.setDouble(5, to.getSaldoAtual());
 			stm.setDate(6, to.getData());
 			stm.executeUpdate();
-			stm.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,8 +50,7 @@ public class ExtratoDAO {
 
 		String sqlSelect = "SELECT * FROM MOVIMENTACAO_BANCARIA WHERE CodCliente = ? and DataMovimentacao >= ? and DataMovimentacao <= ?";
 
-		try (Connection conn = ConnectionFactory.obtemConexao();
-				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+		try (PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
 			stm.setInt(1, idCliente);
 			stm.setDate(2, dataInicial);
 			stm.setDate(3, dataFinal);
@@ -70,8 +72,6 @@ public class ExtratoDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
-			stm.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();

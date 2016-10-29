@@ -31,12 +31,12 @@ public class LoginFilter implements Filter {
 		String uri = req.getRequestURI();
 		String comando = req.getParameter("command");
 		
-		System.out.println("Req.: " + req + "\nSession:" + session + "\nLogado = " + logado + "\nPath: " + path + "\nUri: " + uri + "\nComando: " + comando);
+		//System.out.println("Req.: " + req + "\nSession:" + session + "\nLogado = " + logado + "\nPath: " + path + "\nUri: " + uri + "\nComando: " + comando);
 		 
 		if (comando == null) {
 			comando = "";
 		}
-
+		
 		if (logado == null && !uri.equals(path + "/Index.jsp") && !comando.equals("FazerLogin")) {
 
 			((HttpServletResponse) response).sendRedirect(path + "/Index.jsp");

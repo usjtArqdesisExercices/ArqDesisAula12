@@ -1,6 +1,7 @@
 package command;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -8,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import dao.ExtratoDAO;
 import model.Data;
 import model.Extrato;
 import to.ExtratoTO;
@@ -42,7 +45,11 @@ public class ExtratoOutraData implements Command {
 
 		extrato.setDataInicial(dataInicial);
 		extrato.setDataFinal(dataFinal);
-		listaExtrato = extrato.consultaExtrato(id);
+		
+		Connection conn = (Connection) request.getAttribute("conexao");
+		ExtratoDAO extratoDAO = new ExtratoDAO(conn);
+
+		listaExtrato = extrato.consultaExtrato(id, extratoDAO);
 
 		session.setAttribute("listaExtrato", listaExtrato);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("EfetuarExtrato.jsp");

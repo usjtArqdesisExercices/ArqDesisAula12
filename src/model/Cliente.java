@@ -1,6 +1,5 @@
 package model;
 
-import dao.ClienteDAO;
 import to.ClienteTO;
 
 public class Cliente {
@@ -38,14 +37,6 @@ public class Cliente {
 
 	public void setConta(int conta) {
 		this.conta = conta;
-	}
-
-	public boolean validar() {
-
-		ClienteTO clienteTO = clienteGetTO();
-		ClienteDAO clienteDAO = new ClienteDAO();
-
-		return clienteDAO.validar(clienteTO);
 	}
 
 	public ClienteTO clienteGetTO() {

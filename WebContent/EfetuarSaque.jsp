@@ -58,7 +58,7 @@
 			</div>
 		</div>
 		<!-- /.modal -->
-		<form action="Saque.do" method="post" style="width: 50%">
+		<form action="Controller.do" method="post" style="width: 50%">
 			<table>
 				<tr>
 					<td align="left">
@@ -66,17 +66,17 @@
 						<div id="withdrawOptions1">
 
 							<div align="center" id="submitButton" id="10ReaisButton">
-								<button type="submit" class="btn btn-porimary" name="acao"
-									value="10Reais">R$ 10</button>
+								<button type="submit" class="btn btn-porimary" name="command"
+									value="Saque10Reais">R$ 10</button>
 							</div>
 							<div align="center" id="submitButton" id="20ReaisButton">
-								<button type="submit" class="btn btn-porimary" name="acao"
-									value="20Reais">R$ 20</button>
+								<button type="submit" class="btn btn-porimary" name="command"
+									value="Saque20Reais">R$ 20</button>
 							</div>
 
 							<div align="center" id="submitButton" id="50ReaisButton">
-								<button type="submit" class="btn btn-porimary" name="acao"
-									value="50Reais">R$ 50</button>
+								<button type="submit" class="btn btn-porimary" name="command"
+									value="Saque50Reais">R$ 50</button>
 							</div>
 						</div>
 					</td>
@@ -90,8 +90,8 @@
 								style="width: 50%; margin: -3px; border: 2px"
 								placeholder="Digite um valor" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" required>
 							<br>
-							<button type="submit" class="btn btn-porimary" name="acao"
-								value="outroValor">Confirma</button>
+							<button type="submit" class="btn btn-porimary" name="command"
+								value="SaqueOutroValor">Confirma</button>
 						</div>
 					</td>
 
@@ -99,18 +99,18 @@
 						<!-- Opções de Saque Lado direito -->
 						<div id="withdrawOptions2" align="right">
 							<div align="center" id="submitButton" id="100ReaisButton">
-								<button type="submit" class="btn btn-porimary" name="acao"
-									value="100Reais">R$ 100</button>
+								<button type="submit" class="btn btn-porimary" name="command"
+									value="Saque100Reais">R$ 100</button>
 							</div>
 
 							<div align="center" id="submitButton" id="200ReaisButton">
-								<button type="submit" class="btn btn-porimary" name="acao"
-									value="200Reais">R$ 200</button>
+								<button type="submit" class="btn btn-porimary" name="command"
+									value="Saque200Reais">R$ 200</button>
 							</div>
 
 							<div align="center" id="submitButton" id="500ReaisButton">
-								<button type="submit" class="btn btn-porimary" name="acao"
-									value="500Reais">R$ 500</button>
+								<button type="submit" class="btn btn-porimary" name="command"
+									value="Saque500Reais">R$ 500</button>
 							</div>
 						</div>
 					</td>

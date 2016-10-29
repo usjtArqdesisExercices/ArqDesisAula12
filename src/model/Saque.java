@@ -2,6 +2,7 @@ package model;
 
 import java.sql.Date;
 import model.Extrato;
+import dao.ExtratoDAO;
 import dao.SaqueDAO;
 import to.ExtratoTO;
 import to.SaqueTO;
@@ -50,27 +51,19 @@ public class Saque {
 		this.valorSaque = valorSaque;
 	}
 
-	public void efetuarSaque() {
-
-		SaqueDAO saqueDAO = new SaqueDAO();
-		SaqueTO saqueTO = new SaqueTO();
+	public void efetuarSaque(SaqueDAO saqueDAO) {
 
 		Data date = new Data();
 		data = (Date) date.retornaDataHoje();
 
-		saqueTO.setIdCliente(idCliente);
-		saqueTO.setSaldoAtual(saldoAtual);
-		saqueTO.setValorSaque(valorSaque);
-		saqueTO.setData((java.sql.Date) data);
-		saqueDAO.efetuarSaque(saqueTO);
-
-		salvaMovBanc();
+		saqueDAO.efetuarSaque(getSaqueTO());
 	}
 
-	public void salvaMovBanc() {
+	public void salvaMovBanc(ExtratoDAO extratoDAO) {
 
 		Extrato extrato = new Extrato();
 		ExtratoTO extratoTO = new ExtratoTO();
+		
 		extratoTO.setIdCliente(idCliente);
 		extratoTO.setSaldoAtual(saldoAtual);
 		extratoTO.setValorMovimentacao(valorSaque);
@@ -78,12 +71,11 @@ public class Saque {
 		extratoTO.setTipoCredDeb(2);
 		extratoTO.setData((java.sql.Date) data);
 
-		extrato.salvaExtrato(extratoTO);
+		extrato.salvaExtrato(extratoTO, extratoDAO);
 	}
 
-	public void carregaUtilmoSaque(int id) {
+	public void carregaUtilmoSaque(int id, SaqueDAO saqueDAO) {
 
-		SaqueDAO saqueDAO = new SaqueDAO();
 		SaqueTO saqueTO = saqueDAO.carregaUtilmoSaque(id);
 
 		idCliente = saqueTO.getIdCliente();

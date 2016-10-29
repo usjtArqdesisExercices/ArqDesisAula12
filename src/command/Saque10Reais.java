@@ -1,11 +1,16 @@
 package command;
 
 import java.io.IOException;
+import java.sql.Connection;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import dao.ExtratoDAO;
+import dao.SaqueDAO;
 import model.Saque;
 
 public class Saque10Reais implements Command {
@@ -25,12 +30,20 @@ public class Saque10Reais implements Command {
 			e.printStackTrace();
 		}
 
+		Connection conn = (Connection) request.getAttribute("conexao");
+		SaqueDAO saqueDAO = new SaqueDAO(conn);
+		
 		Saque saque = new Saque();
-		saque.carregaUtilmoSaque(id);
+		saque.carregaUtilmoSaque(id, saqueDAO);
+		
 		saldoAtual = saque.getSaqueTO().getSaldoAtual();
-		saque.getSaqueTO().setSaldoAtual(saldoAtual - 10);
-		saque.efetuarSaque();
+		
+		saque.setSaldoAtual(saldoAtual - 10);
+		saque.efetuarSaque(saqueDAO);
 
+		ExtratoDAO extratoDAO = new ExtratoDAO(conn);
+		saque.salvaMovBanc(extratoDAO);
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("ultimoSaldo", saque.getSaqueTO());
 

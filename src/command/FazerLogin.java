@@ -1,12 +1,14 @@
 package command;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.ClienteDAO;
 import model.Cliente;
 
 public class FazerLogin implements Command {
@@ -34,10 +36,14 @@ public class FazerLogin implements Command {
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
+		
+		Connection conn = (Connection) request.getAttribute("conexao");
+		ClienteDAO clienteDAO = new ClienteDAO(conn);	
 
 		Cliente cliente = new Cliente(pPassword, agencia, conta);
+		
 		HttpSession session = request.getSession();
-		if (cliente.validar()) {
+		if (clienteDAO.validar(cliente.clienteGetTO())) {
 			session.setAttribute("logado", cliente.clienteGetTO());
 			System.out.println("Logou " + cliente.clienteGetTO());
 		} else {
