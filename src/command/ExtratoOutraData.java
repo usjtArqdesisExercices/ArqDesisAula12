@@ -13,28 +13,32 @@ import javax.servlet.http.HttpSession;
 import dao.ExtratoDAO;
 import model.Data;
 import model.Extrato;
+import to.ClienteTO;
 import to.ExtratoTO;
 
 public class ExtratoOutraData implements Command {
 
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pId = "1"; // request.getParameter("idUser");
+		
+		HttpSession session;
+		Extrato extrato = new Extrato();
+		ClienteTO clienteTO;
+		ArrayList<ExtratoTO> listaExtrato = null;
+		Connection conn;
+		ExtratoDAO extratoDAO;
+		
+		session = request.getSession();
+		clienteTO = (ClienteTO) session.getAttribute("logado");
+		int id = clienteTO.getIdCliente();
+		
 		String pDataInicial = request.getParameter("data[dataInicial]");
 		String pDataFinal = request.getParameter("data[dataFinal]");
-		Extrato extrato = new Extrato();
-		ArrayList<ExtratoTO> listaExtrato = null;
-		HttpSession session = request.getSession();
+		
+
 		Date dataInicial = null;
 		Date dataFinal = null;
-		int id = 1;
-
-		try {
-			id = Integer.parseInt(pId);
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		}
-
+		
 		try {
 			dataInicial = Data.retornaTipoDate(pDataInicial);
 			dataFinal = Data.retornaTipoDate(pDataFinal);
@@ -46,11 +50,13 @@ public class ExtratoOutraData implements Command {
 		extrato.setDataInicial(dataInicial);
 		extrato.setDataFinal(dataFinal);
 		
-		Connection conn = (Connection) request.getAttribute("conexao");
-		ExtratoDAO extratoDAO = new ExtratoDAO(conn);
+		session = request.getSession();
+		conn = (Connection) request.getAttribute("conexao");
+		extratoDAO = new ExtratoDAO(conn);
 
 		listaExtrato = extrato.consultaExtrato(id, extratoDAO);
 
+		session = request.getSession();
 		session.setAttribute("listaExtrato", listaExtrato);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("EfetuarExtrato.jsp");
 		dispatcher.forward(request, response);

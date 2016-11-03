@@ -12,39 +12,40 @@ import javax.servlet.http.HttpSession;
 import dao.ExtratoDAO;
 import dao.SaqueDAO;
 import model.Saque;
+import to.ClienteTO;
 
 public class Saque20Reais implements Command {
 
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String pId = "1"; // request.getParameter("idCliente");
+		HttpSession session;
+		ClienteTO clienteTO;
+		Connection conn;
+		SaqueDAO saqueDAO;
+		ExtratoDAO extratoDAO;
 		double saldoAtual = -1.00;
-		int id = -1;
 
-		try {
-			if (pId != null && !pId.equals("")) {
-				id = Integer.parseInt(pId);
-			}
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		}
-
-		Connection conn = (Connection) request.getAttribute("conexao");
-		SaqueDAO saqueDAO = new SaqueDAO(conn);
+		session = request.getSession();
+		clienteTO = (ClienteTO) session.getAttribute("logado");
+		int id = clienteTO.getIdCliente();
+		
+		conn = (Connection) request.getAttribute("conexao");
+		saqueDAO = new SaqueDAO(conn);
 		
 		Saque saque = new Saque();
 		saque.carregaUtilmoSaque(id, saqueDAO);
 		
 		saldoAtual = saque.getSaqueTO().getSaldoAtual();
 		
-		saque.setSaldoAtual(saldoAtual - 20);
+		saque.setValorSaque(20);
+		saque.setSaldoAtual(saldoAtual - saque.getValorSaque());
 		saque.efetuarSaque(saqueDAO);
 		
-		ExtratoDAO extratoDAO = new ExtratoDAO(conn);
+		extratoDAO = new ExtratoDAO(conn);
 		saque.salvaMovBanc(extratoDAO);
 
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		session.setAttribute("ultimoSaldo", saque.getSaqueTO());
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("EfetuarSaque.jsp");

@@ -33,17 +33,18 @@ public class LoginFilter implements Filter {
 		
 		//System.out.println("Req.: " + req + "\nSession:" + session + "\nLogado = " + logado + "\nPath: " + path + "\nUri: " + uri + "\nComando: " + comando);
 		 
-		if (comando == null) {
+		//COMO POR JSON NAO TEM COMO MANTER A SESSAO PARA VERIFICAR SE O USUARIO ESTA LOGADO ESTA PARTE FOI COMENTADA
+		/*if (comando == null) {
 			comando = "";
 		}
 		
 		if (logado == null && !uri.equals(path + "/Index.jsp") && !comando.equals("FazerLogin")) {
 
 			((HttpServletResponse) response).sendRedirect(path + "/Index.jsp");
-		} else {
+		} else {*/
 
 			chain.doFilter(request, response);
-		}
+		//}
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

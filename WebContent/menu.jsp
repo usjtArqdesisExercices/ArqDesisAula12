@@ -10,13 +10,13 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="AcessAccount.jsp">HOME</a>
+			<a class="navbar-brand" href="Controller.do?command=AcessAccountReiniciar">HOME</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="Controller.do?command=SaqueReiniciar">Saque</a></li>
 				<li><a href="#">Deposito</a></li>
-				<li><a href="#">Transferencia</a></li>
+				<li><a href="Controller.do?command=TransferenciaReiniciar">Transferencia</a></li>
 				<li><a href="Controller.do?command=ExtratoReiniciar">Extrato</a></li>
 			</ul>
 		</div>

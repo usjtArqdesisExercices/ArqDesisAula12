@@ -42,7 +42,7 @@
 			
 					<td>
 					<div align="center" id="submitButton" id="TransferButton">
-				    	<a href="#"><button type="submit" class="btn btn-porimary">Transferencia</button></a>
+				    	<a href="EfetuarTransferencia.jsp"><button type="submit" class="btn btn-porimary">Transferencia</button></a>
 					</div>
 					</td>
 					

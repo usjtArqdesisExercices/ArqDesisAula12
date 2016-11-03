@@ -15,6 +15,7 @@ public class FazerLogin implements Command {
 
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String pPassword = request.getParameter("data[senha]");
 		String pAgencia = request.getParameter("data[agencia]");
 		String pConta = request.getParameter("data[conta]");
@@ -40,7 +41,7 @@ public class FazerLogin implements Command {
 		Connection conn = (Connection) request.getAttribute("conexao");
 		ClienteDAO clienteDAO = new ClienteDAO(conn);	
 
-		Cliente cliente = new Cliente(pPassword, agencia, conta);
+		Cliente cliente = new Cliente(-1, pPassword, agencia, conta);
 		
 		HttpSession session = request.getSession();
 		if (clienteDAO.validar(cliente.clienteGetTO())) {

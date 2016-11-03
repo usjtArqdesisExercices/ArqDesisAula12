@@ -40,7 +40,7 @@
 	        </div>
 		</div>	        
         <br>
-		<div align="center" id="submitButton" id="loginButton">
+		<div align="center" id="loginButton">
 	    	<button type="submit" class="btn btn-porimary" name="command" value="FazerLogin">Login</button>
 		</div>
         

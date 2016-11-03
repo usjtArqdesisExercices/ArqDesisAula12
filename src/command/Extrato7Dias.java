@@ -12,27 +12,27 @@ import javax.servlet.http.HttpSession;
 
 import dao.ExtratoDAO;
 import model.Extrato;
+import to.ClienteTO;
 import to.ExtratoTO;
 
 public class Extrato7Dias implements Command {
 
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pId = "1"; // request.getParameter("idUser");
+
+		HttpSession session;
 		Extrato extrato = new Extrato();
 		ArrayList<ExtratoTO> listaExtrato = null;
-		HttpSession session = request.getSession();
+		Connection conn;
+		ExtratoDAO extratoDAO;
 
-		int id = 1;
+		session = request.getSession();
+		ClienteTO clienteTO = (ClienteTO) session.getAttribute("logado");
+		int id = clienteTO.getIdCliente();
 
-		try {
-			id = Integer.parseInt(pId);
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		}
-		
-		Connection conn = (Connection) request.getAttribute("conexao");
-		ExtratoDAO extratoDAO = new ExtratoDAO(conn);
+		session = request.getSession();
+		conn = (Connection) request.getAttribute("conexao");
+		extratoDAO = new ExtratoDAO(conn);
 
 		extrato.extratoDias(7);
 		listaExtrato = extrato.consultaExtrato(id, extratoDAO);
